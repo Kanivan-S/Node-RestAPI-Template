@@ -36,11 +36,20 @@ app.use((req,res,next)=>{
 
   const data = verifyToken(token)
 
-  //set locals
-  if(data) next() 
-
-  return res.status(401).send({message:"un-authorised , give me token!!"})
-
+  //set locals - according to your logic 
+  //we can use it in the controllers function - logic
+  
+  if(data!==null){ 
+    //set 
+    //store the decoded data in res.locals.keyname=value
+    //for eg : 
+    res.locals.id=data.id;
+    
+    next(); 
+  }
+  else{
+    return res.status(401).send({message:"un-authorised , give me token!!"})
+  }
 })
 
 
