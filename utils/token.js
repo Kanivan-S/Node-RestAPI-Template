@@ -6,6 +6,8 @@ var logger=require("./log")(module)
 const verifyToken = (token) => {
  
   try {
+    //splitting token from bearer 
+    token = token.split(" ")[1]
     
     const decoded = jwt.verify(token, jwtDetails.secret);
     
